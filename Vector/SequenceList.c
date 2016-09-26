@@ -1,3 +1,10 @@
+/**
+ *顺序表实现
+ *待改进：顺序表不存在情况下选择销毁顺序表功能的报错退出和错误反馈未修复
+ *By Spacebody
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
