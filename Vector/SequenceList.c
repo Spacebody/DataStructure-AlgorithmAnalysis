@@ -10,9 +10,9 @@
 #include <stdbool.h>
 #define MAXSIZE 10  //初始分配量
 #define LISTINCREMENT 10  //存储空间的分配增量
-#define FINISHED 1  //
-#define ERROR 0  //
-#define OVERFLOW -2  //
+#define FINISHED 1
+#define ERROR 0
+#define OVERFLOW -2  
 typedef int eleType;
 typedef struct list //定义一个结构体
 {
