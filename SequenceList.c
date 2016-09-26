@@ -14,8 +14,6 @@ typedef struct list //定义一个结构体
     int length;   //当前顺序表的长度
 }seqList;
 
-
-
 //初始化顺序表
 int listInit(seqList *se)
 {
@@ -27,7 +25,7 @@ int listInit(seqList *se)
     se->length = 0; //置空白长度为 0
     se->listSize = MAXSIZE; //制定顺序表最大长度
     return FINISHED;
-        
+    
 }
 
 //1顺序表当前长度
@@ -36,14 +34,10 @@ int currSize(seqList *se)
     return se->length; //返回顺序表长度
 }
 
-int claerList(seqList se) //2清空顺序表
+//2清空顺序表
+int claerList(seqList *se)
 {
-    int i;
-    //遍历每一个元素，置为 0
-    for(i = 0;i<=se.listSize-1;i++)
-    {
-        se.elem[i-1]= 0;
-    }
+    se->length = 0;
     return FINISHED;
 }
 
@@ -98,7 +92,6 @@ int insertElement(seqList *se,eleType e)
     eleType *p;
     if(se->length >= se->listSize)
     {   //检查列表是否已满
-        printf("列表已满，添加失败");
         return ERROR;
     }
     else
@@ -180,6 +173,21 @@ int insertElementAT(seqList *se, int i, eleType e)  //10第 i 个位置插入元
     }
 }
 
+//10销毁顺序表
+int destList(seqList *se)
+{
+    if(se->elem)
+    {  //释放存储空间
+        free(se->elem);
+        return FINISHED;
+    }
+    else
+    {
+        
+        return ERROR;
+    }
+}
+
 int main(void)
 {
     seqList *pL=(seqList *)malloc(sizeof(seqList)); //初始化列表
@@ -201,6 +209,7 @@ int main(void)
         printf("\n9.返回顺序表容量\n");
         printf("\n10.查询顺序表是否为空\n");
         printf("\n11.清空顺序表\n");
+        printf("\n12.销毁顺序表\n");
         printf("\n0.退出\n");
         printf("\n输入1-11，选择您需要的功能:\n");
         scanf("%d",&a);
@@ -254,7 +263,7 @@ int main(void)
                 }
                 else
                 {
-                    printf("\n添加失败\n");
+                    printf("\n列表已满，添加失败\n");
                 }
                 printf("添加后的顺序表排序为:\n");
                 printList(*pL);
@@ -279,16 +288,26 @@ int main(void)
             case 10: //查询顺序表是否为空
                 if(isEmpty(*pL))
                 {
-                    printf("\n 顺序表为空");
+                    printf("\n顺序表为空\n");
                 }
                 else
                 {
-                    printf("\n顺序表非空");
+                    printf("\n顺序表非空\n");
                 }
                 break;
             case 11:  //清空顺序表
-                claerList(*pL);
-                printf("\n清空成功");
+                claerList(pL);
+                printf("\n清空成功\n");
+                break;
+            case 12: //销毁顺序表
+                if(destList(pL))
+                {
+                    printf("\n销毁成功\n");
+                }
+                else
+                {
+                    printf("\n顺序表未存在\n");
+                }
                 break;
             case 0:    //退出
                 return FINISHED;
@@ -299,7 +318,3 @@ int main(void)
     }
     return 0;
 }
-
-
-
-
