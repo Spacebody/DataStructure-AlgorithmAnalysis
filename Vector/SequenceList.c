@@ -218,7 +218,7 @@ int main(void)
         printf("\n11.清空顺序表\n");
         printf("\n12.销毁顺序表\n");
         printf("\n0.退出\n");
-        printf("\n输入1-11，选择您需要的功能:\n");
+        printf("\n输入1-12，选择您需要的功能:\n");
         scanf("%d",&a);
         printf("\n您选择的功能号为：%d\n",a);
         
