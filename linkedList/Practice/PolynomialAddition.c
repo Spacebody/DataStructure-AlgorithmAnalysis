@@ -1,7 +1,7 @@
 //
 //  PolynomialAddition.c
 //  多项式加法，使用效率不高的冒泡排序仅对链表进行值交换
-//  对于链表的排序方法有很多，这里只是简单地实现多项式降幂排序输出。
+//
 //  Created by Jerry on 16/10/2.
 //  Copyright © 2016年 Spacebody. All rights reserved.
 //
@@ -25,7 +25,7 @@ void printList(poly *head);//打印多项式
 poly *addCff(poly *head);//多项式相加
 poly *addItem(poly *head, int cff, int exp);//插入 A 中不存在的多项式
 poly *sortItem(poly *head); //多项式冒泡排序
-
+poly *deleteZero(poly *head);//删除系数为 0 的多项式
 
 int main(void)
 {
@@ -36,6 +36,7 @@ int main(void)
     printList(head); //打印结果
     printf("请输入多项式 B 的各项的系数和幂次（使用“ ，”隔开）,输入 “0,0” 结束:\n");
     head = addCff(head); //合并同类项
+    head = deleteZero(head);//删除系数为 0 的多项式
     head = sortItem(head); //降幂排序
     printList(head);//输出结果
     return 0;
@@ -128,6 +129,8 @@ poly *addCff(poly *head)
 }
 
 
+
+
 //末尾插入 A 中不存在的多项式
 poly *addItem(poly *head, int cff, int exp)
 {
@@ -145,6 +148,55 @@ poly *addItem(poly *head, int cff, int exp)
     current->next = p;
     return head;
 }
+
+//删除系数为 0 的项
+poly *deleteZero(poly *head)
+{
+    poly *p = head;
+    poly *temp;
+    int flag = 0; //记录便表中 0 的个数
+    while (1)
+    {
+        if (head->cff == 0) //删除头结点的情况
+        {
+            flag++;
+            head = head->next;
+            free(p);
+            p = head;
+        }
+        else
+        {
+            break;
+        }
+    }
+    while (p->next != NULL)
+    {
+        if (p->next->cff == 0 )
+        {
+            flag++;
+            temp = p->next;
+            if (p->next->next != NULL)
+            {
+                p->next = p->next->next;
+                free(temp);
+                temp = NULL;
+            }
+            else //最后一个结点
+            {
+                free(temp);
+                temp =NULL;
+                p->next = NULL;
+                break;
+            }
+        }
+        else //没有删除结点时，查询下一个结点
+        {
+            p = p->next;
+        }
+    }
+    return head;
+}
+
 
 //多项式排序（冒泡排序）
 poly *sortItem(poly *head)
