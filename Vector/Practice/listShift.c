@@ -22,10 +22,37 @@ typedef struct list //定义一个结构体
     int length;   //当前顺序表的长度
 }seqList;
 
+//函数声明
+int initList(seqList *se); //初始化顺序表
+int insertElement(seqList *se,eleType e); //插入元素
+int printList(seqList se); //打印顺序表
+int circleShift(seqList *se,int n,int k); //循环移动元素
 
+//主函数
+int main(void)
+{
+    seqList *list = (seqList *)malloc(sizeof(seqList));
+    initList(list);
+    int n,k,i;
+    printf("请输入数组长度:\n");
+    scanf("%d",&n);
+    printf("请输入右移位数:\n");
+    scanf("%d",&k);
+
+    for(i = 1;i<=n;i++)
+    {
+        insertElement(list,i);
+    }
+    printf("原始数组:");
+    printList(*list);
+    printf("右移后数组:");
+    circleShift(list,n,k);
+    printList(*list);
+    return 0;
+}
 
 //初始化顺序表
-int listInit(seqList *se)
+int initList(seqList *se)
 {
     se->elem = (eleType *)malloc(sizeof(eleType)); //指定每个元素的内存大小为 int 型
     if(!se->elem)
@@ -37,11 +64,12 @@ int listInit(seqList *se)
     return FINISHED;
 }
 
+//插入元素
 int insertElement(seqList *se,eleType e)
 {
     eleType *p;
     if(se->length >= se->listSize)
-    {   //检查列表是否已满
+    {   //检查顺序表是否已满
         return ERROR;
     }
     else
@@ -53,6 +81,7 @@ int insertElement(seqList *se,eleType e)
     return  FINISHED;
 }
 
+//打印顺序表
 int printList(seqList se)
 {
     int i;
@@ -65,7 +94,7 @@ int printList(seqList se)
     return FINISHED;
 }
 
-
+//循环移动元素
 int circleShift(seqList *se,int n,int k)
 {
     int i;
@@ -84,26 +113,3 @@ int circleShift(seqList *se,int n,int k)
     return FINISHED;
 }
 
-
-
-int main(void)
-{
-    seqList *list = (seqList *)malloc(sizeof(seqList));
-    listInit(list);
-    int n,k,i;
-    printf("请输入数组长度:\n");
-    scanf("%d",&n);
-    printf("请输入右移位数:\n");
-    scanf("%d",&k);
-
-    for(i = 1;i<=n;i++)
-    {
-        insertElement(list,i);
-    }
-    printf("原始数组:");
-    printList(*list);
-    printf("右移后数组:");
-    circleShift(list,n,k);
-    printList(*list);
-    return 0;
-}

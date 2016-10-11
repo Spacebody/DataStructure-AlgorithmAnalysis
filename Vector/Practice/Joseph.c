@@ -18,6 +18,7 @@
 #define FINISHED 1
 #define ERROR 0
 #define OVERFLOW -2
+
 typedef int eleType;
 typedef struct list //定义一个结构体
 {
@@ -25,6 +26,31 @@ typedef struct list //定义一个结构体
     int listSize;   //当前分配的内存
     int length;   //当前顺序表的长度
 }seqList;
+
+//函数声明
+int listInit(seqList *se); //初始化顺序表
+int insertElement(seqList *se,eleType e); //插入元素
+int josephElem(seqList *se,int m);//出列元素
+
+//主函数
+int main(void)
+{
+    seqList *joList=(seqList *)malloc(sizeof(seqList)); //初始化列表
+    listInit(joList);
+    
+    int n,m,i;
+    printf("请输入总人数: ");
+    scanf("%d",&n);
+    printf("请输入每轮出列的人的报数: ");
+    scanf("%d",&m);
+    for(i = 1;i<=n;i++)
+    {
+        insertElement(joList,i);
+    }
+    josephElem(joList,m);
+
+    return 0;
+}
 
 //初始化顺序表
 int listInit(seqList *se)
@@ -39,6 +65,7 @@ int listInit(seqList *se)
     return FINISHED;
 }
 
+//插入元素
 int insertElement(seqList *se,eleType e)
 {
     eleType *p;
@@ -55,7 +82,7 @@ int insertElement(seqList *se,eleType e)
     return  FINISHED;
 }
 
-
+//出列元素
 int josephElem(seqList *se,int m)
 {
     int t=0,j,k;
@@ -80,28 +107,8 @@ int josephElem(seqList *se,int m)
         printf("\n");
         return FINISHED;
     }
-   
-}
-
-
-
-int main(void)
-{
-    seqList *joList=(seqList *)malloc(sizeof(seqList)); //初始化列表
-    listInit(joList);
     
-    int n,m,i;
-    printf("请输入总人数: ");
-    scanf("%d",&n);
-    printf("请输入每轮出列的人的报数: ");
-    scanf("%d",&m);
-    for(i = 1;i<=n;i++)
-    {
-        insertElement(joList,i);
-    }
-    josephElem(joList,m);
-
-    return 0;
 }
+
 
 
