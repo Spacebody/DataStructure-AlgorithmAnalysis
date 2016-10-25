@@ -9,14 +9,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifndef _LinkedList_h
+
+typedef struct Node node;
 #define FINISHED 1
 #define ERROR 0
 //使用结构体构建链表节点
-typedef struct Node
+struct Node
 {
     int data; //链表内数据
     struct Node *next; //下一个节点位置
-}node;
+};
+
+#endif  /*LinkedList.h*/
+
 
 //函数声明
 int printLen();  //打印链表长度

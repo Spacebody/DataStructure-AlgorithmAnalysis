@@ -8,19 +8,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#ifndef  _SequenceList_h
+typedef struct list seqList; 
+typedef int eleType;
+
 #define MAXSIZE 10  //初始分配量
 #define LISTINCREMENT 10  //存储空间的分配增量
 #define FINISHED 1 //执行成功
 #define ERROR 0 //错误
 #define OVERFLOW -2 //溢出
 
-typedef int eleType;
-typedef struct list //定义一个结构体
+struct list //定义一个结构体
 {
     eleType *elem;  //存储空间基地址
     int listSize;   //当前分配的内存
     int length;   //当前顺序表的长度
-}seqList;
+};
+
+#endif   /*Sequence.h*/
 
 //函数声明
 int initList(seqList *se); //初始化顺序表
