@@ -7,7 +7,7 @@
  * Entrance is (1,1), and result we need to fine is (14,15)
  * Search the direction from right in Countclockwise
  * 
- * By Jerry
+ * By Spacebody
  */
 
 #include <stdio.h>
