@@ -1,24 +1,18 @@
 
 /*
  * By Spacebody
- * EnQueue
- * Dequeue
- * Front
- * IsEmpty
- * IsFull
- * Print
+ * 
  *
- * Implement the queue in circle
- * 实现使用循环队列，利用数组实现
+ * Implement the queue in circle by array
+ * 
  */
 
-//implement in array
 
 #include <stdio.h>
 #include <stdlib.h>
-#ifndef _Queue_h
 
-struct QueueRecord;
+#ifndef _QueueArray_h
+
 typedef struct QueueRecord *Queue;
 typedef int ElemType;
 
@@ -29,34 +23,33 @@ struct QueueRecord
     int Size;
     int Capacity;
     ElemType *Array;
-};  //定义结构体作为队列
+};  //ues struct to implement the queue
 
-#endif /* Queue.h*/
+#endif /* QueueArray.h*/
 
+#define MinQueueSize 5 
 
-#define MinQueueSize 5  //定义最小容量
-
-int IsEmpty(Queue Q);  //检查是否为空
-int IsFull(Queue Q);  //检查是够队满
-void MakeEmpty(Queue Q);  //置为空队列
-Queue CreateQueue(int MinSize);  //初始化队列
-void EnQueue(ElemType X, Queue Q);  //入队
-ElemType Front(Queue Q);  //取队列头元素
-void Dequeue(Queue Q);  //出队
-void Print(Queue Q);  //打印
-void Error(char s[]);  //输出错误信息
+int IsEmpty(Queue Q);  //exam whether it is empty
+int IsFull(Queue Q);  //exam whether it is full
+void MakeEmpty(Queue Q);  //empty the queue
+Queue CreateQueue(int MinSize);  //initialize the queue
+void EnQueue(ElemType X, Queue Q);  //enqueue
+ElemType Front(Queue Q);  //get the front element of the queue
+void Dequeue(Queue Q);  //dequeue
+void Print(Queue Q);  //print out the elements
+void Error(char s[]);  //print out the error messages
 
 int main(void)
 {
     Queue Q;
-    Q = CreateQueue(MinQueueSize);  //创建队列
-    EnQueue(5, Q); //入队
+    Q = CreateQueue(MinQueueSize); 
+    EnQueue(5, Q); 
     EnQueue(6, Q);
     EnQueue(10, Q);
     EnQueue(25, Q);
-    Print(Q);  //打印
-    printf("%d\n",Front(Q));  //取头元素
-    Dequeue(Q);  //出队
+    Print(Q);  
+    printf("%d\n",Front(Q)); 
+    Dequeue(Q);  
     Dequeue(Q);
     Dequeue(Q);
     Dequeue(Q);
@@ -64,18 +57,18 @@ int main(void)
     return 0;
 }
 
-//初始化队列
+
 Queue CreateQueue(int MinSize)
 {
     Queue Q;
-    Q = malloc(sizeof(Queue));
+    Q = malloc(sizeof(struct QueueRecord));
     Q->Array = (ElemType *)malloc( sizeof(ElemType) * MinSize );
-    Q->Capacity = MinSize;
-    MakeEmpty(Q);
+    Q->Capacity = MinSize; //assign the value to limit the queue
+    MakeEmpty(Q); //empty the queue
     return Q;
 }
 
-//置为空队列
+
 void MakeEmpty(Queue Q)
 {
     Q->Size = 0;
@@ -83,19 +76,19 @@ void MakeEmpty(Queue Q)
     Q->Rear = 0;
 }
 
-//检查是否为空
+
 int IsEmpty(Queue Q)
 {
     return Q->Size == 0;
 }
 
-//检查是否队满
+
 int IsFull(Queue Q)
 {
     return Q->Size == Q->Capacity;
 }
 
-//入队
+
 void EnQueue(ElemType X, Queue Q)
 {
     
@@ -105,19 +98,19 @@ void EnQueue(ElemType X, Queue Q)
     }
     else
     {
-        Q->Size++;
-        Q->Array[Q->Rear] = X;
-        Q->Rear = (Q->Rear+1)% Q->Capacity;
+        Q->Size++; //increase the size of the queue if element is enqueued
+        Q->Array[Q->Rear] = X; //assign the last value to the rear
+        Q->Rear = (Q->Rear+1)% Q->Capacity; //change the location of the rear
     }
 }
 
-//取队列头元素
+
 ElemType Front(Queue Q)
 {
     return Q->Array[Q->Front];
 }
 
-//出队
+
 void Dequeue(Queue Q)
 {
     if(IsEmpty(Q))
@@ -126,19 +119,19 @@ void Dequeue(Queue Q)
     }
     else
     {
-        Q->Size--;
-        Q->Front = (Q->Front+1)%Q->Capacity;
+        Q->Size--; //decrease the size if element is dequeued
+        Q->Front = (Q->Front+1)%Q->Capacity; //withdraw the front
     }
 }
 
-//输出错误信息
+
 void Error(char s[])
 {
     printf("%s\n", s);
 }
 
 
-//按序列输出队列元素
+
 void Print(Queue Q)
 {
     if(IsEmpty(Q))
