@@ -7,3 +7,4 @@ P 表示 Practice
 - 链表（LinkedList）P: 多项式运算（加法、减法、乘法、求导）
 - 栈（Stack）--数组实现、链表实现 P: 迷宫求解（Stack 实现）
 - 队列（Queue）--数组实现、链表实现 
+- 字符串匹配（Brute Force、KMP）注释中的算法实现待更新......
