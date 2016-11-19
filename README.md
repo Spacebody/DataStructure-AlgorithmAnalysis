@@ -8,3 +8,4 @@ P 表示 Practice
 - 栈（Stack）--数组实现、链表实现 P: 迷宫求解（Stack 实现）
 - 队列（Queue）--数组实现、链表实现 
 - 字符串匹配（Brute Force、KMP）注释中的算法实现待更新......
+- 树（Tree）二叉树（Binary Tree）
