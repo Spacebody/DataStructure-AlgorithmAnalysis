@@ -19,9 +19,10 @@
 
 typedef struct TreeNode *Tree;
 typedef struct QueueRecord *Queue;
+typedef struct StackRecord *Stack;
 typedef char ElemType;
 #define MAX 10
-
+#define EMPTY -1
 #endif /* BinaryTree.h */
 
 struct TreeNode
@@ -40,6 +41,13 @@ struct QueueRecord
     int Size;
 };
 
+struct StackRecord
+{
+    struct TreeNode *(*elem);
+    int TopofStack;
+    int Capacity;
+};
+
 //functions of tree
 Tree CreateTree(Tree T); //create the tree
 int SumLeaf(Tree T); //count the sum of leaves
@@ -47,20 +55,38 @@ int Depth(Tree T); //count the depth of the binary tree
 ElemType Get(Tree T); //get the element
 void Set(Tree T); //set the element
 int HasChild(Tree T); //exam wether the node has child
+
+
+//recursion alogrithm
 /*  depth first traversal  */
 void PreOrder(Tree T); //traversal in preorder
 void InOrder(Tree T); //traversal in inorder
 void PostOrder(Tree T); //traversal in postorder
+
+/*breath first traversal */
 void BreadthFirst(Tree T,Queue Q);//breath first traversal
 
 //functions of queue
 Queue CreateQueue(int MAXSIZE);
 void EnQueue(Tree T, Queue Q);
 Tree DeQueue(Queue Q);
-int IsEmpty(Queue Q);
-int IsFull(Queue Q);
-void Print(Queue Q);
+int IsEmptyQueue(Queue Q);
+int IsFullQueue(Queue Q);
+void PrintQueue(Queue Q);
 void Error(char s[]);
+
+//non-recursion algorithm
+
+
+//functions of stack
+int IsEmptyStack(Stack S); //Is empty
+int IsFullStack(Stack S);  //Is full
+Stack CreateStack(int MaxSize); //create a stack
+ElemType Top(Stack S);  //get the elem in top
+int Pop(Stack S);  //pop the elem out stack
+int Push(Tree T, Stack S); //push the elem into stack
+void PrintStack(Stack S); //print elements in the stack
+
 
 int main(void)
 {
@@ -154,7 +180,6 @@ int SumLeaf(Tree T)
 } 
 
 
-
 int Depth(Tree T)  
 {
 	int depth = 0, DepthLeft, DepthRight;
@@ -181,11 +206,18 @@ int HasChild(Tree T)
 }
 
 
+ElemType Get(Tree T)
+{
+  
+
+} 
+void Set(Tree T); 
+
 Queue CreateQueue(int MAXSIZE)
 {
     Queue Q;
     Q = malloc(sizeof(struct QueueRecord));
-    Q->elem = (struct TreeNode **)malloc(sizeof(struct TreeNode)*MAXSIZE);
+    Q->elem = (Tree *)malloc(sizeof(struct TreeNode)*MAXSIZE);
     Q->Capacity = MAXSIZE;
     Q->Size = 0;
     Q->front = 0;
@@ -194,13 +226,13 @@ Queue CreateQueue(int MAXSIZE)
 }
 
 
-int IsEmpty(Queue Q)
+int IsEmptyQueue(Queue Q)
 {
     return Q->Size == 0;
 }
 
 
-int IsFull(Queue Q)
+int IsFullQueue(Queue Q)
 {
     return Q->Size == Q->Capacity;
 }
@@ -209,7 +241,7 @@ int IsFull(Queue Q)
 void EnQueue(Tree T, Queue Q)
 {
     
-    if(IsFull(Q))
+    if(IsFullQueue(Q))
     {
         Error("Full Queue!");
     }
@@ -225,7 +257,7 @@ void EnQueue(Tree T, Queue Q)
 Tree DeQueue(Queue Q)
 {
     Tree tmp;
-    if(IsEmpty(Q))
+    if(IsEmptyQueue(Q))
     {
         Error("Empty Queue!");
     }
@@ -247,9 +279,9 @@ void Error(char s[])
 
 
 
-void Print(Queue Q)
+void PrintQueue(Queue Q)
 {
-    if(IsEmpty(Q))
+    if(IsEmptyQueue(Q))
     {
         Error("Empty Queue!");
     }
@@ -267,7 +299,7 @@ void BreadthFirst(Tree T,Queue Q)
 {
     Tree tmp;
     EnQueue(T,Q);
-    while(!IsEmpty(Q))
+    while(!IsEmptyQueue(Q))
     {
         tmp = DeQueue(Q);
         if(HasChild(tmp->Left))
@@ -281,3 +313,80 @@ void BreadthFirst(Tree T,Queue Q)
         printf("\n");
     }
 }
+
+
+Stack CreateStack(int MaxSize)
+{
+    Stack S;
+    S = malloc(sizeof(struct StackRecord));
+    S->elem = (Tree *)malloc(sizeof(struct TreeNode)*MaxSize);
+    S->Capacity = MaxSize;
+    S->TopofStack = EMPTY;
+    return S;
+}
+
+
+
+//Is empty
+int IsEmptyStack(Stack S)
+{
+    return S->TopofStack == EMPTY; 
+} 
+
+//Is full
+int IsFullStack(Stack S)
+{
+    return S->Capacity == S->TopofStack;;
+}
+
+//get the elem in top
+ElemType Top(Stack S)
+{
+    if(!IsEmptyStack(S))
+    {
+        return S->elem[S->TopofStack]->elem;
+    }
+    exit(0);
+}
+
+//pop the elem out stack
+int Pop(Stack S)
+{
+    if(!IsEmptyStack(S))
+    {
+        S->TopofStack--;
+        return 1;
+    }
+    exit(0);
+}
+
+//push the elem into stack
+int Push(Tree T, Stack S)
+{
+    if(!IsFullStack(S))
+    {
+        S->TopofStack++;
+        S->elem[S->TopofStack] = T;
+        return 1;
+    }
+    exit(0);
+}
+
+//print elements in the stack
+void PrintStack(Stack S)
+{
+    if(IsEmptyStack(S))
+    {
+        printf("Empty Stack!\n");
+    }
+    else
+    {
+        int i;
+        for(i = S->TopofStack; i >= 0;i--)
+        {
+            printf("%c\n", S->elem[i]->elem);
+        }
+    }
+}
+
+
