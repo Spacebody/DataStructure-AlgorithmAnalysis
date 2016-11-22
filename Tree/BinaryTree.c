@@ -3,6 +3,8 @@
 //Call the functions in recursion/non-recursion
 //Traverse the tree in depth first(preorder/inorder/postorder)
 //Traverse the tree in breath first
+//
+//Enter "ABDH##I##EJ###CFL###G###" to test
 //By Spacebody
 //
 //
