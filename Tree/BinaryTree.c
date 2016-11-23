@@ -206,12 +206,12 @@ int HasChild(Tree T)
 }
 
 
-ElemType Get(Tree T)
-{
+// ElemType Get(Tree T)
+// {
   
 
-} 
-void Set(Tree T); 
+// } 
+// void Set(Tree T); 
 
 Queue CreateQueue(int MAXSIZE)
 {
