@@ -1,6 +1,6 @@
 //
 //Binary tree to recover the tree (A(B(E(K,L),F),C(G),D(H(M),I,J)))
-//Call the functions in recursion/non-recursion
+//Traverse the tree in recursion/non-recursion algorithms
 //Traverse the tree in depth first(preorder/inorder/postorder)
 //Traverse the tree in breath first
 //
@@ -76,13 +76,15 @@ void PrintQueue(Queue Q);
 void Error(char s[]);
 
 //non-recursion algorithm
-
+void NonRePreOrder(Tree T, Stack S);
+void NonReInOrder(Tree T, Stack S);
+void NonRePostOrder(Tree T, Stack S);
 
 //functions of stack
 int IsEmptyStack(Stack S); //Is empty
 int IsFullStack(Stack S);  //Is full
 Stack CreateStack(int MaxSize); //create a stack
-ElemType Top(Stack S);  //get the elem in top
+Tree Top(Stack S);  //get the elem in top
 int Pop(Stack S);  //pop the elem out stack
 int Push(Tree T, Stack S); //push the elem into stack
 void PrintStack(Stack S); //print elements in the stack
@@ -93,8 +95,10 @@ int main(void)
 
     Tree T;
     Queue Q;
+    Stack S;
     T = CreateTree(T);
     Q = CreateQueue(MAX);
+    S = CreateStack(MAX);
     PreOrder(T);
     printf("\n");
     InOrder(T);
@@ -103,7 +107,10 @@ int main(void)
     printf("\n");
     printf("%d\n", SumLeaf(T));
     printf("%d\n", Depth(T));
-    BreadthFirst(T,Q);
+    BreadthFirst(T, Q);
+    printf("\n");
+    NonReInOrder(T, S);
+    printf("\n");
     return 0;
 
 }
@@ -112,7 +119,7 @@ int main(void)
 Tree CreateTree(Tree T)
 {
     ElemType elem;
-    elem = getchar(); //get the string "ABEK#L##F##CG##DHM##I#J####"
+    elem = getchar(); //get the string "ABDH##I##EJ###CFL###G###"
     if(elem == '#')
     {  //if the character is '#', the end the pointer
         T = NULL; 
@@ -263,7 +270,7 @@ Tree DeQueue(Queue Q)
     }
     else
     {
-        printf("%c", Q->elem[Q->front]->elem);
+        printf("%c\t", Q->elem[Q->front]->elem);
         tmp = Q->elem[Q->front];
         Q->Size--; //decrease the size if element is dequeued
         Q->front = (Q->front+1)%Q->Capacity; //withdraw the front
@@ -310,8 +317,8 @@ void BreadthFirst(Tree T,Queue Q)
         {
             EnQueue(tmp->Right, Q);
         }
-        printf("\n");
     }
+    printf("\n");
 }
 
 
@@ -340,11 +347,11 @@ int IsFullStack(Stack S)
 }
 
 //get the elem in top
-ElemType Top(Stack S)
+Tree Top(Stack S)
 {
     if(!IsEmptyStack(S))
     {
-        return S->elem[S->TopofStack]->elem;
+        return S->elem[S->TopofStack];
     }
     exit(0);
 }
@@ -389,4 +396,70 @@ void PrintStack(Stack S)
     }
 }
 
+void NonRePreOrder(Tree T, Stack S)
+{
+    Tree Tmp = T;
+	while(Tmp || !IsEmptyStack(S))
+	{
+		while(Tmp)
+		{
+			printf("%c\t", Tmp->elem);
+			Push(Tmp, S);
+			Tmp = Tmp->Left;
+		}
+		if(!IsEmptyStack(S))
+		{
+			Tmp = Top(S);
+			Tmp = Tmp->Right;
+			Pop(S);
+		}
+	}
 
+}
+
+void NonReInOrder(Tree T, Stack S)
+{
+    Tree Tmp = T;
+	while(Tmp || !IsEmptyStack(S))
+	{
+		while(Tmp)
+		{                                                                                                                      
+			Push(Tmp, S);
+			Tmp = Tmp->Left;
+		}
+		if(!IsEmptyStack(S))
+		{
+			Tmp = Top(S);
+			printf("%c\t", Tmp->elem);
+            Pop(S);
+			Tmp = Tmp->Right;
+		}
+	}
+}
+
+void NonRePostOrder(Tree T, Stack S)
+{
+    Tree Tmp = T, PreChild = NULL;
+    Push(Tmp, S);
+    while(!IsEmptyStack(S))
+    {
+        Tmp = Top(S);
+        if((!Tmp->Left && !Tmp->Right) || (Tmp->Left == PreChild || Tmp->Right == PreChild))
+        {
+            printf("%c\t", Tmp->elem);
+            Pop(S);
+            PreChild = Tmp;
+        }
+        else
+        { 
+            if(Tmp->Right)
+            {
+                Push(Tmp->Right, S);
+            }
+            if(Tmp->Left)
+            {
+                Push(Tmp->Left, S);
+            }
+        }       
+    }
+}
