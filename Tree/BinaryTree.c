@@ -109,7 +109,11 @@ int main(void)
     printf("%d\n", Depth(T));
     BreadthFirst(T, Q);
     printf("\n");
+    NonRePreOrder(T, S);
+    printf("\n");
     NonReInOrder(T, S);
+    printf("\n");
+    NonRePostOrder(T, S);
     printf("\n");
     return 0;
 
