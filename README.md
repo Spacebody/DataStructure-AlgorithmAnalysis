@@ -16,7 +16,9 @@ P 表示 Practice
 * 队列（Queue）
     - 数组实现
     - 链表实现 
-* 字符串匹配（Brute Force、KMP）（注释中的算法实现待更新......）
+* 字符串匹配（注释中的算法实现待更新......）
+    - Brute Force
+    - KMP
 * 树（Tree）
     - 二叉树（Binary Tree）
         - 递归先序、中序、后序遍历
