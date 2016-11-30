@@ -53,7 +53,7 @@ Tree CreateTree(Tree T); //create the tree
 int SumLeaf(Tree T); //count the sum of leaves
 int Depth(Tree T); //count the depth of the binary tree
 ElemType Get(Tree T); //get the element
-void Set(Tree T); //set the element
+void Set(ElemType X, Tree T); //set the element
 int HasChild(Tree T); //exam wether the node has child
 
 
@@ -67,13 +67,12 @@ void PostOrder(Tree T); //traversal in postorder
 void BreadthFirst(Tree T,Queue Q);//breath first traversal
 
 //functions of queue
-Queue CreateQueue(int MAXSIZE);
-void EnQueue(Tree T, Queue Q);
-Tree DeQueue(Queue Q);
-int IsEmptyQueue(Queue Q);
-int IsFullQueue(Queue Q);
-void PrintQueue(Queue Q);
-void Error(char s[]);
+Queue CreateQueue(int MAXSIZE); //create queue
+void EnQueue(Tree T, Queue Q); //enqueue
+Tree DeQueue(Queue Q); //dequeue
+int IsEmptyQueue(Queue Q); //is empty
+int IsFullQueue(Queue Q); //is full
+void Error(char s[]); //return error message
 
 //non-recursion algorithm
 void NonRePreOrder(Tree T, Stack S);
@@ -87,9 +86,8 @@ Stack CreateStack(int MaxSize); //create a stack
 Tree Top(Stack S);  //get the elem in top
 int Pop(Stack S);  //pop the elem out stack
 int Push(Tree T, Stack S); //push the elem into stack
-void PrintStack(Stack S); //print elements in the stack
 
-
+//Drivring function
 int main(void)
 {
 
@@ -208,7 +206,7 @@ int Depth(Tree T)
 }
 
 int HasChild(Tree T)
-{
+{   //exam whether it has child
     if(T != NULL)
     {
         return true;
@@ -217,12 +215,15 @@ int HasChild(Tree T)
 }
 
 
-// ElemType Get(Tree T)
-// {
-  
-
-// } 
-// void Set(Tree T); 
+ElemType Get(Tree T)
+{
+    return T->elem; //get the value of the node 
+}
+ 
+void Set(ElemType X, Tree T)
+{
+    T->elem = X; //set the value of the node 
+} 
 
 Queue CreateQueue(int MAXSIZE)
 {
@@ -289,23 +290,6 @@ void Error(char s[])
 }
 
 
-
-void PrintQueue(Queue Q)
-{
-    if(IsEmptyQueue(Q))
-    {
-        Error("Empty Queue!");
-    }
-    else
-    {
-        int i;
-        for(i = 0; i< Q->Size; i++)
-        {
-            printf("%c\n", Q->elem[i]->elem);
-        }
-    }
-}
-
 void BreadthFirst(Tree T,Queue Q)
 {
     Tree tmp;
@@ -314,11 +298,11 @@ void BreadthFirst(Tree T,Queue Q)
     {
         tmp = DeQueue(Q);
         if(HasChild(tmp->Left))
-        {
+        {   //has left child, enqueue
             EnQueue(tmp->Left, Q);
         }
         if(HasChild(tmp->Right))
-        {
+        {  //has right child, enqueue
             EnQueue(tmp->Right, Q);
         }
     }
@@ -383,23 +367,6 @@ int Push(Tree T, Stack S)
     exit(0);
 }
 
-//print elements in the stack
-void PrintStack(Stack S)
-{
-    if(IsEmptyStack(S))
-    {
-        printf("Empty Stack!\n");
-    }
-    else
-    {
-        int i;
-        for(i = S->TopofStack; i >= 0;i--)
-        {
-            printf("%c\n", S->elem[i]->elem);
-        }
-    }
-}
-
 void NonRePreOrder(Tree T, Stack S)
 {
     Tree Tmp = T;
@@ -408,14 +375,14 @@ void NonRePreOrder(Tree T, Stack S)
 		while(Tmp)
 		{
 			printf("%c\t", Tmp->elem);
-			Push(Tmp, S);
+			Push(Tmp, S); //push the root into stack
 			Tmp = Tmp->Left;
 		}
 		if(!IsEmptyStack(S))
 		{
-			Tmp = Top(S);
-			Tmp = Tmp->Right;
-			Pop(S);
+			Tmp = Top(S); //get the top elem
+			Tmp = Tmp->Right; //go right
+			Pop(S); //pop out the top elem
 		}
 	}
 
@@ -428,8 +395,8 @@ void NonReInOrder(Tree T, Stack S)
 	{
 		while(Tmp)
 		{                                                                                                                      
-			Push(Tmp, S);
-			Tmp = Tmp->Left;
+			Push(Tmp, S); 
+			Tmp = Tmp->Left; //go left
 		}
 		if(!IsEmptyStack(S))
 		{
@@ -449,7 +416,7 @@ void NonRePostOrder(Tree T, Stack S)
     {
         Tmp = Top(S);
         if((!Tmp->Left && !Tmp->Right) || (Tmp->Left == PreChild || Tmp->Right == PreChild))
-        {
+        {   //if no child or either of its children ever been visited
             printf("%c\t", Tmp->elem);
             Pop(S);
             PreChild = Tmp;
@@ -458,7 +425,7 @@ void NonRePostOrder(Tree T, Stack S)
         { 
             if(Tmp->Right)
             {
-                Push(Tmp->Right, S);
+                Push(Tmp->Right, S); //push into stack
             }
             if(Tmp->Left)
             {
