@@ -8,9 +8,9 @@ P 表示 Practice
     - P: 循环移动、约瑟夫问题
 * 最大连续子序列求和算法简单分析（O(N^3)、O(N^2)、O(N)）(Max subsequence)
 * 链表（LinkedList） 
-    - **单链表（LinkedList)**
+    - 单链表（LinkedList)
         + P: 单链表--多项式运算（加法、减法、乘法、求导）
-    - **双向循环链表（DlinkedList)** 
+    - 双向循环链表（DlinkedList) 
 * 栈（Stack）
     - 数组实现
         + P: 迷宫求解、括号匹配
@@ -23,7 +23,10 @@ P 表示 Practice
     - KMP
 * 树（Tree）
     - 二叉树（Binary Tree）
-        - 递归先序、中序、后序遍历
-        - 非递归的先序、后序、中序遍历
+        + 递归先序、中序、后序遍历
+        + 非递归的先序、后序、中序遍历
     - 广度优先搜索、深度优先搜索
     - 二叉搜索树（Binary Search Tree）的操作（创建、查找、插入、删除）
+* 堆（Heap）
+	- 优先队列（Priority Queue）（数组实现）
+		+ 构建堆、删除、插入、增加/减少 key 值、上/下滤、寻找最小值、删除最小值...
