@@ -4,7 +4,7 @@
 
 P 表示 Practice
 
-* <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/Vector">顺序表 （Vector/SequenceList）</a>
+* [X] <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/Vector">顺序表 （Vector/SequenceList）</a>
     - P: 循环移动、约瑟夫问题
 * <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/blob/master/TestofMaxSubSequence.c">最大连续子序列求和算法简单分析</a>（O(N^3)、O(N^2)、O(N)）(Max subsequence)
 * <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/LinkedList">链表（LinkedList）</a>
