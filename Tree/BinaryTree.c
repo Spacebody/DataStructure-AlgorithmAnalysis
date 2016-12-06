@@ -120,7 +120,7 @@ int main(void)
 
 
 Tree CreateTree(Tree T)
-{
+{ //create the tree in inorder
     ElemType elem;
     elem = getchar(); //get the string "ABDH##I##EJ###CFL###G###"
     if(elem == '#')
@@ -146,7 +146,7 @@ void PreOrder(Tree T)
 {   
     if(T)
     {
-        printf("%c\t",T->elem);
+        printf("%c\t", T->elem);
         PreOrder(T->Left); //Call the function in recursion
         PreOrder(T->Right);
     }
@@ -157,7 +157,7 @@ void InOrder(Tree T)
     if(T)
     {
         InOrder(T->Left); //Call the function in recursion
-        printf("%c\t",T->elem);
+        printf("%c\t", T->elem);
         InOrder(T->Right);
     }
 }
@@ -168,7 +168,7 @@ void PostOrder(Tree T)
     { 
         PostOrder(T->Left); //Call the function in recursion
         PostOrder(T->Right);
-        printf("%c\t",T->elem);
+        printf("%c\t", T->elem);
     }
 }
 
