@@ -19,18 +19,18 @@ typedef int ElemType;
 #define MINDATA -100000
 
 //functions of priority queue
-PriQueue Initialize(int MaxSize);
-void Destory(PriQueue H);
+PriQueue Initialize(int MaxSize); //initialize the heap
+void Destory(PriQueue H); //destory heap
 void MakeEmpty(PriQueue H);  //empty the queue
-void Insert(ElemType X, PriQueue H);
-ElemType DeleteMin(PriQueue H);
-ElemType FindMin(PriQueue H);
-void Delete(PriQueue H, int i);
-PriQueue BuildHeap(PriQueue H, int data[], int length);
-void PercolateDown(int p, PriQueue H);
-void PercolateUp(int p, PriQueue H);
-void DecreaseKey(int i, ElemType delta, PriQueue H);
-void IncreaseKey(int i, ElemType delta, PriQueue H);
+void Insert(ElemType X, PriQueue H); //insert the elements
+ElemType DeleteMin(PriQueue H); //delete the minma in the heap
+ElemType FindMin(PriQueue H); //fine the minma in the heap
+void Delete(PriQueue H, int i); //delete the elements with the index i
+PriQueue BuildHeap(PriQueue H, int data[], int length); //build heap 
+void PercolateDown(int p, PriQueue H); //percolate down 
+void PercolateUp(int p, PriQueue H); //perlocate up 
+void DecreaseKey(int i, ElemType delta, PriQueue H); //decrease key by delta
+void IncreaseKey(int i, ElemType delta, PriQueue H); //increase key by delta 
 int IsEmpty(PriQueue H);  //exam whether it is empty
 int IsFull(PriQueue H);  //exam whether it is full
 void Print(PriQueue H);  //print out the elements
