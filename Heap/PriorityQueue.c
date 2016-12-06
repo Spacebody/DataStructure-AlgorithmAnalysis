@@ -61,6 +61,7 @@ int main(void)
 	Print(H);
 	IncreaseKey(1, 16, H);
 	Print(H);
+	Delete(H, 3);
 	Destory(H);
 	Print(H); //since H is been deleted, than it will print out nothing
 	return 0;
@@ -179,7 +180,7 @@ void Print(PriQueue H)
 
 void Delete(PriQueue H, int i)
 {
-	DecreaseKey(i,-99999,H); //decrease the element which will be deleted to smallest
+	DecreaseKey(i,99999,H); //decrease the element which will be deleted to smallest
 	DeleteMin(H); //use delete minma to delete the element
 }
 
