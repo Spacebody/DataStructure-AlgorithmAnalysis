@@ -62,6 +62,7 @@ int main(void)
 	IncreaseKey(1, 16, H);
 	Print(H);
 	Delete(H, 3);
+	Print(H);
 	Destory(H);
 	Print(H); //since H is been deleted, than it will print out nothing
 	return 0;
