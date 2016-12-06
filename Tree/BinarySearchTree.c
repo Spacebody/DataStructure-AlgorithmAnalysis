@@ -8,26 +8,14 @@
 //
 //
 
-#ifndef _BinarySearchTree_h_
+#ifndef _BinarySearchTree_h
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 typedef struct BinarySearchTree *Tree;
 typedef int ElemType;
-
-
-#endif /* BinarySearchTree.h */
-
-
-struct BinarySearchTree
-{
-	ElemType elem;
-	Tree Left;
-	Tree Right;
-};
-
-
 
 //funcions about bianry search tree
 Tree BinarySearchTree(Tree T, int tree[], int length); //create a binary search tree
@@ -40,6 +28,15 @@ Tree Delete(ElemType X, Tree T); //delete the value appointed
 Tree MakeEmpty(Tree T); //make an empty tree
 ElemType Retrieve(Tree T); //retrieve the value according to the address
 void InOrder(Tree T); //traverse the tree in inorder
+
+#endif /* BinarySearchTree.h */
+
+struct BinarySearchTree
+{
+	ElemType elem;
+	Tree Left;
+	Tree Right;
+};
 
 //Driving function
 int main(void)

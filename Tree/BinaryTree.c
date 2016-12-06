@@ -11,7 +11,7 @@
 
 
 
-#ifndef _BinaryTree_h_
+#ifndef _BinaryTree_h
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,30 +23,6 @@ typedef struct StackRecord *Stack;
 typedef char ElemType;
 #define MAX 10
 #define EMPTY -1
-#endif /* BinaryTree.h */
-
-struct TreeNode
-{
-    ElemType elem;
-    Tree Left;
-    Tree Right;
-};
-
-struct QueueRecord
-{
-    struct TreeNode *(*elem); //use structure pointer array to store the pointer of node of the tree
-    int front;
-    int rear;
-    int Capacity;
-    int Size;
-};
-
-struct StackRecord
-{
-    struct TreeNode *(*elem);
-    int TopofStack;
-    int Capacity;
-};
 
 //functions of tree
 Tree CreateTree(Tree T); //create the tree
@@ -55,7 +31,6 @@ int Depth(Tree T); //count the depth of the binary tree
 ElemType Get(Tree T); //get the element
 void Set(ElemType X, Tree T); //set the element
 int HasChild(Tree T); //exam wether the node has child
-
 
 //recursion alogrithm
 /*  depth first traversal  */
@@ -86,6 +61,32 @@ Stack CreateStack(int MaxSize); //create a stack
 Tree Top(Stack S);  //get the elem in top
 int Pop(Stack S);  //pop the elem out stack
 int Push(Tree T, Stack S); //push the elem into stack
+
+#endif /* BinaryTree.h */
+
+struct TreeNode
+{
+    ElemType elem;
+    Tree Left;
+    Tree Right;
+};
+
+struct QueueRecord
+{
+    struct TreeNode *(*elem); //use structure pointer array to store the pointer of node of the tree
+    int front;
+    int rear;
+    int Capacity;
+    int Size;
+};
+
+struct StackRecord
+{
+    struct TreeNode *(*elem);
+    int TopofStack;
+    int Capacity;
+};
+
 
 //Drivring function
 int main(void)

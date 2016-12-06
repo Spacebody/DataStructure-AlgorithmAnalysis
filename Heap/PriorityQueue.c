@@ -9,7 +9,8 @@
  * By Spacebody
  */
 
-#ifndef _PriorityQueue_h_
+#ifndef _PriorityQueue_h
+
 #include <stdio.h>
 #include <stdlib.h>
 typedef struct QueueRecord *PriQueue;
@@ -36,6 +37,7 @@ void Print(PriQueue H);  //print out the elements
 void Error(char s[]);  //print out the error messages
 
 #endif /* PriorityQueue.h */
+
 struct QueueRecord
 {
     int Size;

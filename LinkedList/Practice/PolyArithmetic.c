@@ -3,19 +3,13 @@
 //  PolynomialAddition.c
 //  By Spacebody 
 
+#ifndef _PolynomialAddition_h
 
 #include <stdio.h>
 #include <stdlib.h>
 
 //使用结构体构建多项式的每一项
-typedef struct Polynomial
-{
-    int coeff; //系数
-    int exp; //指数
-    struct Polynomial *next; //下一个节点位置
-}term;
-
-
+typedef struct Polynomial term;
 
 term *Create(void); //创建多项式
 int FindMaxExp(term *headA,term *headB); //寻找最高次幂
@@ -28,6 +22,14 @@ term *SortItem(term *head); //多项式冒泡排序
 term *DeleteZero(term *head);//删除系数为 0 的多项式
 void PrintList(term *head);//打印多项式
 
+#endif /* PolynomialAddition.h */
+
+struct Polynomial
+{
+    int coeff; //系数
+    int exp; //指数
+    struct Polynomial *next; //下一个节点位置
+};
 
 int main(void)
 {

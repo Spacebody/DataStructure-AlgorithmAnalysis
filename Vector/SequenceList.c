@@ -5,11 +5,12 @@
  */
 
 
+
+#ifndef  _SequenceList_h
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-#ifndef  _SequenceList_h
 typedef struct list seqList; 
 typedef int eleType;
 
@@ -18,15 +19,6 @@ typedef int eleType;
 #define FINISHED 1 //执行成功
 #define ERROR 0 //错误
 #define OVERFLOW -2 //溢出
-
-struct list //定义一个结构体
-{
-    eleType *elem;  //存储空间基地址
-    int listSize;   //当前分配的内存
-    int length;   //当前顺序表的长度
-};
-
-#endif   /*Sequence.h*/
 
 //函数声明
 int initList(seqList *se); //初始化顺序表
@@ -41,6 +33,16 @@ int printList(seqList se); //打印顺序表
 int maxSize(void); //返回顺序表容量
 int insertElementAT(seqList *se, int i, eleType e); //第 i 个位置插入元素
 int destList(seqList *se); //销毁顺序表
+
+#endif   /* Sequence.h */
+
+struct list //定义一个结构体
+{
+    eleType *elem;  //存储空间基地址
+    int listSize;   //当前分配的内存
+    int length;   //当前顺序表的长度
+};
+
 
 //主函数
 int main(void)

@@ -5,6 +5,8 @@
  *
  */
 
+#ifndef _ListShift_h
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -13,20 +15,23 @@
 #define FINISHED 1
 #define ERROR 0
 #define OVERFLOW -2
-
 typedef int eleType;
-typedef struct list //定义一个结构体
-{
-    eleType *elem;  //存储空间基地址
-    int listSize;   //当前分配的内存
-    int length;   //当前顺序表的长度
-}seqList;
+typedef struct list seqList;
 
 //函数声明
 int initList(seqList *se); //初始化顺序表
 int insertElement(seqList *se,eleType e); //插入元素
 int printList(seqList se); //打印顺序表
 int circleShift(seqList *se,int n,int k); //循环移动元素
+
+#endif /* ListShift.h */
+
+struct list //定义一个结构体
+{
+    eleType *elem;  //存储空间基地址
+    int listSize;   //当前分配的内存
+    int length;   //当前顺序表的长度
+};
 
 //主函数
 int main(void)

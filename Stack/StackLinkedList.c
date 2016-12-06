@@ -7,15 +7,25 @@
 */
 
 
+
+
+#ifndef _StackLinkedList_h
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#ifndef _StackLinkedList_h_
-
 typedef struct StackRecord Stack;
 typedef int ElemType;
 #define EMPTY -1
 #define MAX 10
+
+Stack *Create(void); //create the stack
+Stack *Pop(Stack *head); //pop out the node
+Stack *Push(ElemType X, Stack *head); //push the element and create a new node 
+int IsEmpty(Stack *head); //exam whether it is empty
+int IsFull(Stack *head); //exam whether it is full
+ElemType Top(Stack *head); //get the top element from the stack 
+void DisposeStack(Stack *head); //dispose the stack, which means disposing the linkedlist
+void Print(Stack *head); //print out the elements in the stack
 
 #endif /* StackLinkedList.h */
 
@@ -28,16 +38,6 @@ struct StackRecord
 //global variables can be modified everywhere
 int Capacity = MAX; //the capacity of the stack
 int Size; //the current size
-
-
-Stack *Create(void); //create the stack
-Stack *Pop(Stack *head); //pop out the node
-Stack *Push(ElemType X, Stack *head); //push the element and create a new node 
-int IsEmpty(Stack *head); //exam whether it is empty
-int IsFull(Stack *head); //exam whether it is full
-ElemType Top(Stack *head); //get the top element from the stack 
-void DisposeStack(Stack *head); //dispose the stack, which means disposing the linkedlist
-void Print(Stack *head); //print out the elements in the stack
 
 int main(void)
 {

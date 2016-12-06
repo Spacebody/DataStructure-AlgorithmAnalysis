@@ -7,18 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 typedef struct DlinkedList List;
 typedef int ElemType;
-
-struct DlinkedList
-{	
-	ElemType elem;
-	struct DlinkedList *prior;
-	struct DlinkedList *next;
-};
-
-#endif /* DlinkedList.h */
 
 List *Create(void); //create empty list
 void InsertLast(List *head, ElemType X); //insert element into the last of list
@@ -26,6 +16,15 @@ void InsertBefore(List *head, ElemType X, int key); //insert the element into th
 int Search(List *head, int key); //search the key we want 
 void Remove(List *head);//remove the last element in the list
 void Print(List *head);//print out the list
+
+#endif /* DlinkedList.h */
+
+struct DlinkedList
+{	
+	ElemType elem;
+	struct DlinkedList *prior;
+	struct DlinkedList *next;
+};
 
 int main(void)
 {

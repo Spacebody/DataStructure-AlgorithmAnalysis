@@ -10,15 +10,22 @@
  * By Spacebody
  */
 
-#include <stdio.h>
-#include <stdlib.h>
 
 #ifndef _RatInMaze_h
+
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct Direction Dir;
 typedef struct MapRecord Map;
 #define MAX_STACK_SIZE 210
 #define MAXROW 16
 #define MAXCOL 17
+
+//declaration of the functions
+void Push(Map pos); //push into the stack
+Map Pop(void); //pop out of the stack
+int IsEmpty(void); //exam whether it is empty
+int Path(int x_start,int y_start,int x_end,int y_end); //search for the solution
 
 #endif /*  RatInMaze.h  */
 
@@ -55,12 +62,6 @@ int Maze[MAXROW][MAXCOL]={{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                           {1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1},
                           {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};//Map size is 14*15, surrounding by number 1
 Map stack[MAX_STACK_SIZE];//declaration of the stack
-
-//declaration of the functions
-void Push(Map pos); //push into the stack
-Map Pop(void); //pop out of the stack
-int IsEmpty(void); //exam whether it is empty
-int Path(int x_start,int y_start,int x_end,int y_end); //search for the solution
 
 int main(void)
 {

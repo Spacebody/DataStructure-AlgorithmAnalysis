@@ -8,13 +8,26 @@
  */
 
 
-#include <stdio.h>
-#include <stdlib.h>
+
 
 #ifndef _QueueArray_h
 
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct QueueRecord *Queue;
 typedef int ElemType;
+#define MinQueueSize 5 
+int IsEmpty(Queue Q);  //exam whether it is empty
+int IsFull(Queue Q);  //exam whether it is full
+void MakeEmpty(Queue Q);  //empty the queue
+Queue CreateQueue(int MinSize);  //initialize the queue
+void EnQueue(ElemType X, Queue Q);  //enqueue
+ElemType Front(Queue Q);  //get the front element of the queue
+void Dequeue(Queue Q);  //dequeue
+void Print(Queue Q);  //print out the elements
+void Error(char s[]);  //print out the error messages
+
+#endif /* QueueArray.h*/
 
 struct QueueRecord
 {
@@ -25,19 +38,6 @@ struct QueueRecord
     ElemType *Array;
 };  //ues struct to implement the queue
 
-#endif /* QueueArray.h*/
-
-#define MinQueueSize 5 
-
-int IsEmpty(Queue Q);  //exam whether it is empty
-int IsFull(Queue Q);  //exam whether it is full
-void MakeEmpty(Queue Q);  //empty the queue
-Queue CreateQueue(int MinSize);  //initialize the queue
-void EnQueue(ElemType X, Queue Q);  //enqueue
-ElemType Front(Queue Q);  //get the front element of the queue
-void Dequeue(Queue Q);  //dequeue
-void Print(Queue Q);  //print out the elements
-void Error(char s[]);  //print out the error messages
 
 int main(void)
 {

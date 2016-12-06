@@ -4,27 +4,19 @@
 //By Spacebody
 //
 
+
+
+#ifndef  _StackArray_h 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h> //use the isalpha funtion
-
-#ifndef  _StackArray_h 
-
 #define EMPTY -1
 #define MAX 50
 
 typedef char ElemType;
 typedef struct StackRecord *Stack;
-
-#endif /* StackArray.h */
-
-struct StackRecord
-{
-	int Capacity;
-	int TopofStack;
-	ElemType *array;
-};
 
 //Funcitons
 int IsEmpty(Stack S); //Is empty
@@ -37,7 +29,14 @@ void Push(ElemType X, Stack S); //push the elem into stack
 void Print(Stack S); //print elements in the stack
 void PareMatch(char test[], Stack S);
 
+#endif /* StackArray.h */
 
+struct StackRecord
+{
+	int Capacity;
+	int TopofStack;
+	ElemType *array;
+};
 
 int main(void)
 {

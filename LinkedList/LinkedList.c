@@ -7,23 +7,15 @@
 //  Copyright © 2016年 Spacebody. All rights reserved.
 //
 
-#include <stdio.h>
-#include <stdlib.h>
+
 
 #ifndef _LinkedList_h
 
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct Node node;
 #define FINISHED 1
 #define ERROR 0
-//使用结构体构建链表节点
-struct Node
-{
-    int data; //链表内数据
-    struct Node *next; //下一个节点位置
-};
-
-#endif  /*LinkedList.h*/
-
 
 //函数声明
 int printLen();  //打印链表长度
@@ -38,6 +30,15 @@ node *insertNode(node *head,int elem,int position);  //插入节点
 node *deleteNode(node *head,int elem);  //删除节点
 node *reverseList(node *head);  //逆置顺序
 node *addNode(); //末尾添加节点
+
+#endif  /*LinkedList.h*/
+
+//使用结构体构建链表节点
+struct Node
+{
+    int data; //链表内数据
+    struct Node *next; //下一个节点位置
+};
 
 //主函数
 int main(void)

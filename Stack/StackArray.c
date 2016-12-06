@@ -4,25 +4,17 @@
  * By Spacebody
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+
 
 #ifndef  _StackArray_h 
 
+#include <stdio.h>
+#include <stdlib.h>
 #define EMPTY -1
 #define MAX 10
 
 typedef int ElemType;
 typedef struct StackRecord *Stack;
-
-#endif /* StackArray.h */
-
-struct StackRecord
-{
-	int Capacity;
-	int TopofStack;
-	ElemType *array;
-};
 
 //Funcitons
 int IsEmpty(Stack S); //Is empty
@@ -33,6 +25,16 @@ ElemType Top(Stack S);  //get the elem in top
 int Pop(Stack S);  //pop the elem out stack
 int Push(ElemType X, Stack S); //push the elem into stack
 void Print(Stack S); //print elements in the stack
+
+#endif /* StackArray.h */
+
+struct StackRecord
+{
+	int Capacity;
+	int TopofStack;
+	ElemType *array;
+};
+
 
 
 int main(void)

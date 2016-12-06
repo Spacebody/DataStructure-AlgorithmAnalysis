@@ -8,27 +8,15 @@
  *
  */
 
+#ifndef _QueueLinkedList_h_
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#ifndef _QueueLinkedList_h_
-
 typedef struct QueueRecord Queue;
 typedef int ElemType;
 
 #define MAX 5
 #define EMPTY 0
-
-#endif /* QueueLinkedList.h */
-
-struct QueueRecord
-{
-	ElemType elem;
-	struct QueueRecord *next;
-};
-
-int Size;
 
 Queue *Create(void); //initialize the queue
 Queue *Enqueue(ElemType X, Queue *head); //enqueue
@@ -41,6 +29,15 @@ void Print(Queue *head); //print out the elements in the queue
 void Error(char s[]);  //print ou the error message
 void Dispose(Queue *head); //dispose the queue
 
+#endif /* QueueLinkedList.h */
+
+struct QueueRecord
+{
+	ElemType elem;
+	struct QueueRecord *next;
+};
+
+int Size;
 
 int main(void)
 {

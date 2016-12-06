@@ -7,6 +7,7 @@
  * RK
  */
 
+#ifndef _MatchString_h
 
 #include <stdio.h>
 #include <string.h>
@@ -18,6 +19,8 @@ int Horspool(char A[], char B[]);//Horspool
 int BM(char A[],char B[]);//Boyer-Moore
 int Sunday(char A[],char B[]);//Sunday
 int RK(char A[],char B[]);//RK
+
+#endif /* MatchString.h */
 
 int main(void)
 {
