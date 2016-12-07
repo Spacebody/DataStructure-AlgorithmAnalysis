@@ -73,7 +73,7 @@ PriQueue Initialize(int MaxSize)
 {
     PriQueue H;
 
-    H = malloc(sizeof(struct QueueRecord));
+    H = (PriQueue)malloc(sizeof(struct QueueRecord));
     if(H == NULL)
     {
     	Error("Out of Space!");
