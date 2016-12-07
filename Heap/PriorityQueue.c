@@ -73,10 +73,10 @@ PriQueue Initialize(int MaxSize)
 {
     PriQueue H;
 
-    H = (PriQueue)malloc(sizeof(struct QueueRecord));
-    if(H == NULL)
+    if(!(H = (PriQueue)malloc(sizeof(struct QueueRecord))))
     {
     	Error("Out of Space!");
+    	exit(0);
     }
     H->elem = (ElemType *)malloc(sizeof(ElemType) * (MaxSize + 1) ); //the element with index 0 should be included
     H->Capacity = MaxSize; 
