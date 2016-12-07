@@ -22,12 +22,16 @@ Tree BinarySearchTree(Tree T, int tree[], int length); //create a binary search 
 bool SearchValue(ElemType X, Tree T); //exam whether there is such value on the tree
 Tree Find(ElemType X, Tree T); //search the value the same to the given value
 Tree Insert(ElemType X, Tree T); //insert value into the tree
-Tree FindMin(Tree T); //find the max on the tree
-Tree FindMax(Tree T); //find the min on the tree
+Tree FindMin(Tree T); //find the max on the tree by recursion
+Tree FindMax(Tree T); //find the min on the tree by recursion
+Tree NonReFineMin(Tree T); //find the max on the tree by non-recursion
+Tree NonReFineMax(Tree T);//find the min on the tree by non-recursion
 Tree Delete(ElemType X, Tree T); //delete the value appointed
 Tree MakeEmpty(Tree T); //make an empty tree
 ElemType Retrieve(Tree T); //retrieve the value according to the address
 void InOrder(Tree T); //traverse the tree in inorder
+
+
 
 #endif /* BinarySearchTree.h */
 
@@ -62,6 +66,8 @@ int main(void)
     {
         printf("False\n");
     }
+    printf("%d\n", Retrieve(NonReFineMin(T)));
+    printf("%d\n", Retrieve(NonReFineMax(T)));
 	return 0;
 }
 
@@ -196,6 +202,30 @@ Tree FindMax(Tree T)
      {
         return FindMax(T->Right);
      }
+}
+
+Tree NonReFineMin(Tree T)
+{
+    if(T != NULL)
+    {
+        while(T->Left != NULL)
+        {
+            T = T->Left;
+        }
+    }
+    return T;
+}
+
+Tree NonReFineMax(Tree T)
+{
+    if(T != NULL)
+    {
+        while(T->Right != NULL)
+        {
+            T = T->Right;
+        }
+    }
+    return T;
 }
 
 Tree Delete(ElemType X, Tree T)
