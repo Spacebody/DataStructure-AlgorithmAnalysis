@@ -27,6 +27,7 @@ P 表示 Practice
         + 非递归的先序、后序、中序遍历
     - 广度优先搜索、深度优先搜索
     - 二叉搜索树（Binary Search Tree）的操作（创建、查找、插入、删除）
+    - 表达式树（Expression Tree）--从后缀表达式转化成表达式树
 * <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/Heap">堆（Heap）</a>
 	- 优先队列（Priority Queue）（数组实现）
 		+ 构建堆、删除、插入、增加/减少 key 值、上/下滤、寻找最小值、删除最小值...
