@@ -32,7 +32,7 @@ P 表示 Practice
 	- 优先队列（Priority Queue）（数组实现）
 		+ 构建堆、删除、插入、增加/减少 key 值、上/下滤、寻找最小值、删除最小值...
 * <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/Graph">图（Graph）</a>
-	- Dijkstra algorithm
+	- 最短路径算法（Dijkstra algorithm）
 
 * <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/Sort">排序（Sort）</a>
 	- 插入排序（Insertion sort）
