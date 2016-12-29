@@ -35,8 +35,13 @@ P 表示 Practice
 	- 最短路径算法（Dijkstra algorithm）
 
 * <a href="https://github.com/Spacebody/DataStructure-AlgorithmAnalysis/tree/master/Sort">排序（Sort）</a>
-	- 插入排序（Insertion sort）
-	- 希尔排序（Shell sort）
+	- 比较排序（Comparison Sorting）
+		+ 插入排序（Insertion sort）
+		+ 希尔排序（Shell sort）
+		+ 归并排序（Merge sort）
+		+ 快速排序（Quick sort）
+		+ 冒泡排序（Bubble sort）
+		+ 选择排序（Selection sort）
+	- 计数排序（Counting sort）
 	- 堆排序（Heap sort）
-	- 归并排序（Merge sort）
-	- 快速排序 （Quick sort）
+	- 基数排序（Radix sort）
