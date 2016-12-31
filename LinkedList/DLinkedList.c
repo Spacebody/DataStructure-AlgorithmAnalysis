@@ -3,10 +3,11 @@
 //
 // by Spacebody 
 
-#ifndef _DlinkedList_h_
-
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifndef _DlinkedList_h_
+
 typedef struct DlinkedList List;
 typedef int ElemType;
 

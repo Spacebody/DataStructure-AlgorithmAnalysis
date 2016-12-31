@@ -8,12 +8,11 @@
  */
 
 
-
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef _QueueArray_h
 
-#include <stdio.h>
-#include <stdlib.h>
 typedef struct QueueRecord *Queue;
 typedef int ElemType;
 #define MinQueueSize 5 

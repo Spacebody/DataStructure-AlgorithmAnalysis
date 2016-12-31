@@ -8,10 +8,11 @@
  *
  */
 
-#ifndef _QueueLinkedList_h_
-
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifndef _QueueLinkedList_h_
+
 typedef struct QueueRecord Queue;
 typedef int ElemType;
 

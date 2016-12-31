@@ -9,13 +9,11 @@
 //
 //
 
-
-
-#ifndef _BinaryTree_h
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#ifndef _BinaryTree_h
 
 typedef struct TreeNode *Tree;
 typedef struct QueueRecord *Queue;

@@ -6,13 +6,11 @@
 * By Spacebody
 */
 
-
-
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef _StackLinkedList_h
 
-#include <stdio.h>
-#include <stdlib.h>
 typedef struct StackRecord Stack;
 typedef int ElemType;
 #define EMPTY -1

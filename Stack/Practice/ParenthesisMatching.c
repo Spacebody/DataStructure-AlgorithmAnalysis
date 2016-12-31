@@ -4,14 +4,13 @@
 //By Spacebody
 //
 
-
-
-#ifndef  _StackArray_h 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h> //use the isalpha funtion
+
+#ifndef  _StackArray_h 
+
 #define EMPTY -1
 #define MAX 50
 

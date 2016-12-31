@@ -10,11 +10,11 @@
  * By Spacebody
  */
 
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef _RatInMaze_h
 
-#include <stdio.h>
-#include <stdlib.h>
 typedef struct Direction Dir;
 typedef struct MapRecord Map;
 #define MAX_STACK_SIZE 210

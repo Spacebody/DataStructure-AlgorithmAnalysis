@@ -4,12 +4,11 @@
  * By Spacebody
  */
 
-
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef  _StackArray_h 
 
-#include <stdio.h>
-#include <stdlib.h>
 #define EMPTY -1
 #define MAX 10
 

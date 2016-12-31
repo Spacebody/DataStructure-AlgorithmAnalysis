@@ -8,11 +8,11 @@
 //
 //
 
-#ifndef _BinarySearchTree_h
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#ifndef _BinarySearchTree_h
 
 typedef struct BinarySearchTree *Tree;
 typedef int ElemType;

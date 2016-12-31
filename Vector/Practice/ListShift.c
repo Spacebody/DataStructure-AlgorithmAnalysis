@@ -5,11 +5,12 @@
  *
  */
 
-#ifndef _ListShift_h
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#ifndef _ListShift_h
+
 #define MAXSIZE 10  //初始分配量
 #define LISTINCREMENT 10  //存储空间的分配增量
 #define FINISHED 1

@@ -7,12 +7,11 @@
 //  Copyright © 2016年 Spacebody. All rights reserved.
 //
 
-
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifndef _LinkedList_h
 
-#include <stdio.h>
-#include <stdlib.h>
 typedef struct Node node;
 #define FINISHED 1
 #define ERROR 0

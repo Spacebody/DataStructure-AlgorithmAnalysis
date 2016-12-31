@@ -9,10 +9,11 @@
  * By Spacebody
  */
 
-#ifndef _PriorityQueue_h
-
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifndef _PriorityQueue_h
+
 typedef struct QueueRecord *PriQueue;
 typedef int ElemType;
 #define MAX 20
