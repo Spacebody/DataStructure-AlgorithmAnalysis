@@ -24,7 +24,7 @@ Queue *Enqueue(ElemType X, Queue *head); //enqueue
 Queue *Dequeue(Queue *head); //dequeue
 int Front(Queue *head); //get the elem at the front
 int Rear(Queue *head); //get the elem at the rear
-int IsEmpty(Queue *head); //exam whether it is empty
+int IsEmpty(void); //exam whether it is empty
 int IsFull(void); //exam whether it is full
 void Print(Queue *head); //print out the elements in the queue
 void Error(char s[]);  //print ou the error message
@@ -74,12 +74,12 @@ Queue *Create(void)
 
 Queue *Enqueue(ElemType X, Queue *head)
 { 
-	if(IsEmpty(head))
+	if(IsEmpty())
 	{	
 		head->elem = X; //assign if the head node hasn't been assigined the value
 		Size++; //increase the size
 	}
-	else if(!IsEmpty(head) && !IsFull())
+	else if(!IsEmpty() && !IsFull())
 	{
 		Queue *p,*q;
 		p = (Queue *)malloc(sizeof(Queue));
@@ -105,7 +105,7 @@ Queue *Enqueue(ElemType X, Queue *head)
 
 Queue *Dequeue(Queue *head)
 {
-	if(!IsEmpty(head))
+	if(!IsEmpty())
 	{
 		Queue *p, *q;
 		p = head;
@@ -128,7 +128,7 @@ Queue *Dequeue(Queue *head)
 
 int Front(Queue *head)
 {
-	if(!IsEmpty(head))
+	if(!IsEmpty())
 	{
 		Queue *p;
 		p = head;
@@ -147,7 +147,7 @@ int Front(Queue *head)
 
 int Rear(Queue *head)
 {
-	if(!IsEmpty(head))
+	if(!IsEmpty())
 	{
 		return head->elem;
 		
@@ -159,7 +159,7 @@ int Rear(Queue *head)
 	}
 }
 
-int IsEmpty(Queue *head)
+int IsEmpty(void)
 {
 	return Size == EMPTY; 
 }
@@ -173,7 +173,7 @@ int IsFull(void)
 
 void Print(Queue *head)
 {
-	if(!IsEmpty(head))
+	if(!IsEmpty())
 	{
 		int i;
 		Queue *p;
