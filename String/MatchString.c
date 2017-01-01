@@ -44,10 +44,6 @@ int BF(char A[],char B[])
 	{
 		if(A[i] == B[0])
 		{
-			if(i == (int)strlen(A))
-			{
-				return i;
-			}
 			for(j = 1; j < (int)strlen(B); j++)
 			{
 				if(A[i+j] != B[j])
